@@ -2,9 +2,10 @@
   "name": "e-commerces-website-be",
   "version": "1.0.0",
   "main": "index.js",
+  "type":"module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "website": "nodemon index.js"
+    "website": "nodemon src/index.js"
   },
   "author": "",
   "license": "ISC",
