@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import pool from "./config/db.js";
+import createUserTable from "./data/createUserTable.js";
 
 dotenv.config();
 
@@ -15,6 +16,8 @@ app.use(cors());
 app.listen(3000, () => {
   console.log("Server is running in port 3000");
 });
+
+createUserTable();
 
 // Testing POSTGRES Connection
 app.get("/", async (req, res) => {
