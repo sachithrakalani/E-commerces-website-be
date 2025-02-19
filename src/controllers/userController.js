@@ -2,6 +2,7 @@ import {
   createUserQuery,
   getAllUsersQuery,
   getUserByIdQuery,
+  updateUserQuery,
 } from "../models/userModel.js";
 
 const handleResponse = (res, status, message, data = null) => {
@@ -38,6 +39,22 @@ export const getUserById = async (req, res, next) => {
       return handleResponse(res, 404, "User Not Found");
     }
     return handleResponse(res, 200, "User featched Successfully", user);
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const updateUser = async (req, res, next) => {
+  const { username, email, password } = req.body;
+  try {
+    const updateUser = await updateUserQuery(
+      req.params.id,
+      username,
+      email,
+      password
+    );
+    if (!updateUser) return handleResponse(res, 404, "User not Found");
+    handleResponse(res, 200, "User Update Successfully");
   } catch (error) {
     next(error);
   }
