@@ -4,6 +4,7 @@ import cors from "cors";
 import pool from "./config/db.js";
 import createUserTable from "./data/createUserTable.js";
 import errorHandling from "./middlewares/errorhandling.js";
+import userRoutes from "./routes/userRoutes.js"
 
 dotenv.config();
 
@@ -12,6 +13,9 @@ const app = express();
 // Middlewares
 app.use(express.json());
 app.use(cors());
+
+//Routes
+app.use("/api", userRoutes);
 
 //Error Handling middleware
 app.use(errorHandling);
