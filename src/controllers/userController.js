@@ -1,5 +1,6 @@
 import {
   createUserQuery,
+  deleteUserQuery,
   getAllUsersQuery,
   getUserByIdQuery,
   updateUserQuery,
@@ -55,6 +56,18 @@ export const updateUser = async (req, res, next) => {
     );
     if (!updateUser) return handleResponse(res, 404, "User not Found");
     handleResponse(res, 200, "User Update Successfully");
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const deleteUser = async (req, res, next) => {
+  try {
+    const deleteUser = await deleteUserQuery(req.params.id);
+    if (!deleteUser) {
+      return handleResponse(res, 404, "User not Found");
+    }
+    handleResponse(res, 200, "User Delete Successfully", deleteUser);
   } catch (error) {
     next(error);
   }
