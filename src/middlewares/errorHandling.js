@@ -1,4 +1,4 @@
-const errorhandling = (error, req, res, next) => {
+const errorHandling = (error, req, res, next) => {
   console.log(error.stack);
   res.status(500).json({
     status: 500,
@@ -7,4 +7,4 @@ const errorhandling = (error, req, res, next) => {
   });
 };
 
-export default errorhandling;
+export default errorHandling;
