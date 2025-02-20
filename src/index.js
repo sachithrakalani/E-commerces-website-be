@@ -4,8 +4,9 @@ import cors from "cors";
 import pool from "./config/db.js";
 import createUserTable from "./data/createUserTable.js";
 import errorHandling from "./middlewares/errorhandling.js";
-import userRoutes from "./routes/userRoutes.js"
+import userRoutes from "./routes/userRoutes.js";
 import createAdminTable from "./data/createAdminTable.js";
+import adminRoutes from "./routes/adminRoutes.js";
 
 dotenv.config();
 
@@ -17,12 +18,13 @@ app.use(cors());
 
 //Routes
 app.use("/api", userRoutes);
+app.use("/api", adminRoutes);
 
 //Error Handling middleware
 app.use(errorHandling);
 
 createUserTable();
-createAdminTable()
+createAdminTable();
 
 // Testing POSTGRES Connection
 app.get("/", async (req, res) => {
