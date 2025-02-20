@@ -2,6 +2,7 @@ import {
   createAdminQuery,
   getAdminByIdQuery,
   getAllAdminsQuery,
+  updateAdminQuery,
 } from "../models/adminModel.js";
 
 const handleResponse = (res, status, message, data = null) => {
@@ -37,7 +38,25 @@ export const getAdminById = async (req, res, next) => {
     if (!admin) {
       return handleResponse(res, 404, "Admin Not Found");
     }
-    return handleResponse(res, 200, "Admin Feathed Successfully",admin);
+    return handleResponse(res, 200, "Admin Feathed Successfully", admin);
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const updateAdmin = async (req, res, next) => {
+  const { username, email, password } = req.body;
+  try {
+    const updateAdmin = await updateAdminQuery(
+      req.params.id,
+      username,
+      email,
+      password
+    );
+    if (!updateAdmin) {
+      return handleResponse(res, 404, "Admin Not Found");
+    }
+    return handleResponse(res, 200, "Admin Update Successfully", updateAdmin);
   } catch (error) {
     next(error);
   }

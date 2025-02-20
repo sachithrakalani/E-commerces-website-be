@@ -3,6 +3,7 @@ import {
   createAdmin,
   getAdminById,
   getAllAdmin,
+  updateAdmin,
 } from "../controllers/adminController.js";
 
 const router = express.Router();
@@ -10,5 +11,6 @@ const router = express.Router();
 router.post("/admin", createAdmin);
 router.get("/admin", getAllAdmin);
 router.get("/admin/:id", getAdminById);
+router.put("/admin/:id", updateAdmin);
 
 export default router;
