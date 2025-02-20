@@ -1,4 +1,8 @@
-import { createAdminQuery, getAllAdminsQuery } from "../models/adminModel.js";
+import {
+  createAdminQuery,
+  getAdminByIdQuery,
+  getAllAdminsQuery,
+} from "../models/adminModel.js";
 
 const handleResponse = (res, status, message, data = null) => {
   res.status(status).json({
@@ -22,6 +26,18 @@ export const getAllAdmin = async (req, res, next) => {
   try {
     const admins = await getAllAdminsQuery();
     handleResponse(res, 200, "Admin Featched Successfully", admins);
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const getAdminById = async (req, res, next) => {
+  try {
+    const admin = await getAdminByIdQuery(req.params.id);
+    if (!admin) {
+      return handleResponse(res, 404, "Admin Not Found");
+    }
+    return handleResponse(res, 200, "Admin Feathed Successfully",admin);
   } catch (error) {
     next(error);
   }
