@@ -12,3 +12,8 @@ export const getAllAdminsQuery = async () => {
   const result = await pool.query("SELECT * FROM admin");
   return result.rows;
 };
+
+export const getAdminByIdQuery = async (id) => {
+  const result = await pool.query("SELECT * FROM admin WHERE id = $1", [id]);
+  return result.rows[0];
+};
