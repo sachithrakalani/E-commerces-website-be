@@ -7,3 +7,8 @@ export const createAdminQuery = async (username, email, password) => {
   );
   return result.rows[0];
 };
+
+export const getAllAdminsQuery = async () => {
+  const result = await pool.query("SELECT * FROM admin");
+  return result.rows;
+};
