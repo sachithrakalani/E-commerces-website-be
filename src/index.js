@@ -5,6 +5,7 @@ import pool from "./config/db.js";
 import createUserTable from "./data/createUserTable.js";
 import errorHandling from "./middlewares/errorhandling.js";
 import userRoutes from "./routes/userRoutes.js"
+import createAdminTable from "./data/createAdminTable.js";
 
 dotenv.config();
 
@@ -21,6 +22,7 @@ app.use("/api", userRoutes);
 app.use(errorHandling);
 
 createUserTable();
+createAdminTable()
 
 // Testing POSTGRES Connection
 app.get("/", async (req, res) => {
