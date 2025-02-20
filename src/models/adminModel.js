@@ -25,3 +25,11 @@ export const updateAdminQuery = async (id, username, email, password) => {
   );
   return result.rows[0];
 };
+
+export const deleteAdminQuery = async (id) => {
+  const result = await pool.query(
+    "DELETE FROM admin WHERE id = $1 RETURNING *",
+    [id]
+  );
+  return result.rows[0];
+};
