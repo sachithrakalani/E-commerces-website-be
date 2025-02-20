@@ -1,6 +1,7 @@
 import express from "express";
 import {
   createAdmin,
+  deleteAdmin,
   getAdminById,
   getAllAdmin,
   updateAdmin,
@@ -12,5 +13,6 @@ router.post("/admin", createAdmin);
 router.get("/admin", getAllAdmin);
 router.get("/admin/:id", getAdminById);
 router.put("/admin/:id", updateAdmin);
+router.delete("/admin/:id", deleteAdmin);
 
 export default router;

@@ -1,5 +1,6 @@
 import {
   createAdminQuery,
+  deleteAdminQuery,
   getAdminByIdQuery,
   getAllAdminsQuery,
   updateAdminQuery,
@@ -57,6 +58,18 @@ export const updateAdmin = async (req, res, next) => {
       return handleResponse(res, 404, "Admin Not Found");
     }
     return handleResponse(res, 200, "Admin Update Successfully", updateAdmin);
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const deleteAdmin = async (req, res, next) => {
+  try {
+    const deleteAdmin = await deleteAdminQuery(req.params.id);
+    if (!deleteAdmin) {
+      return handleResponse(res, 404, "Admin Not Found");
+    }
+    return handleResponse(res, 200, "Admin Delete Successfully", deleteAdmin);
   } catch (error) {
     next(error);
   }
