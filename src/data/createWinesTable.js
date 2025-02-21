@@ -3,7 +3,7 @@ import pool from "../config/db.js";
 const createWinesTable = async () => {
   const queryText = `CREATE TABLE IF NOT EXISTS wines (
     id SERIAL PRIMARY KEY,
-    winesname VARCHAER(100) NOT NULL,
+    winesname VARCHAR(100) NOT NULL,
     price DECIMAL(10,2) NOT NULL,
     description TEXT,
     manufacturedate DATE NOT NULL,
