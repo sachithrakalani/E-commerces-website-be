@@ -14,7 +14,12 @@ export const createWinesQuery = async (
   return result.rows[0];
 };
 
-export const getAllWinesQuery = async () =>{
-    const result = await pool.query("SELECT * FROM wines");
-    return result.rows;
-}
+export const getAllWinesQuery = async () => {
+  const result = await pool.query("SELECT * FROM wines");
+  return result.rows;
+};
+
+export const getWinesByIdQuery = async (id) => {
+  const result = await pool.query("SELECT * FROM wines WHERE id = $1", [id]);
+  return result.rows[0];
+};
