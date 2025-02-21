@@ -30,16 +30,16 @@ export const updateWinesQuey = async (
   price,
   description,
   manufacturedate,
-  expirationtdate
+  expirationdate
 ) => {
   const result = await pool.query(
-    "UPDATE wines SET winesname = $1, price = $2, description = $3, manufacturedate = $4, expirationtdate = $5, id = $6",
-    [winesname, price, description, manufacturedate, expirationtdate, id]
+    "UPDATE wines SET winesname = $1, price = $2, description = $3, manufacturedate = $4, expirationdate = $5 WHERE id = $6 RETURNING *" ,
+    [winesname, price, description, manufacturedate, expirationdate, id]
   );
   return result.rows[0];
 };
 
-export const deleteWinesQuery = async () => {
+export const deleteWinesQuery = async (id) => {
   const result = await pool.query(
     "DELETE FROM wines WHERE id = $1 RETURNING *",
     [id]
