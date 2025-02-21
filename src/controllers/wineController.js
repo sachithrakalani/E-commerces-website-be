@@ -1,5 +1,6 @@
 import {
   createWinesQuery,
+  deleteWinesQuery,
   getAllWinesQuery,
   getWinesByIdQuery,
   updateWinesQuey,
@@ -52,7 +53,7 @@ export const getWineById = async (req, res, next) => {
 };
 
 export const updateWine = async (req, res, next) => {
-  const { winesname, price, description, manufacturedate, expirationdate} =
+  const { winesname, price, description, manufacturedate, expirationdate } =
     req.body;
   try {
     const updateWine = await updateWinesQuey(
@@ -67,6 +68,18 @@ export const updateWine = async (req, res, next) => {
       return handleResponse(res, 404, "Wine id Not Found");
     }
     return handleResponse(res, 200, "Wine Update Successfully", updateWine);
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const deleteWine = async (req, res, next) => {
+  try {
+    const deleteWine = await deleteWinesQuery(req.params.id);
+    if (!deleteWine) {
+      return handleResponse(res, 404, "Wine is Not Found");
+    }
+    return handleResponse(res, 200, "Wine Delete Successfully", deleteWine);
   } catch (error) {
     next(error);
   }

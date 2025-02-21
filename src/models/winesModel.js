@@ -39,7 +39,7 @@ export const updateWinesQuey = async (
   return result.rows[0];
 };
 
-export const deleteWinesQuery = async () => {
+export const deleteWinesQuery = async (id) => {
   const result = await pool.query(
     "DELETE FROM wines WHERE id = $1 RETURNING *",
     [id]
