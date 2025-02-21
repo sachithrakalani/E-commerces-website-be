@@ -23,3 +23,18 @@ export const getWinesByIdQuery = async (id) => {
   const result = await pool.query("SELECT * FROM wines WHERE id = $1", [id]);
   return result.rows[0];
 };
+
+export const updateWinesQuey = async (
+  id,
+  winesname,
+  price,
+  description,
+  manufacturedate,
+  expirationtdate
+) => {
+  const result = await pool.query(
+    "UPDATE wines SET winesname = $1, price = $2, description = $3, manufacturedate = $4, expirationtdate = $5, id = $6",
+    [winesname, price, description, manufacturedate, expirationtdate, id]
+  );
+  return result.rows[0];
+};
