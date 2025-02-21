@@ -38,3 +38,11 @@ export const updateWinesQuey = async (
   );
   return result.rows[0];
 };
+
+export const deleteWinesQuery = async () => {
+  const result = await pool.query(
+    "DELETE FROM wines WHERE id = $1 RETURNING *",
+    [id]
+  );
+  return result.rows[0];
+};
