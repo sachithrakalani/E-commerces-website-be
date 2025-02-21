@@ -18,6 +18,6 @@ CREATE TABLE IF NOT EXISTS wines (
     winename VARCHAR(50) NOT NULL,
     price DECIMAL(10,2) NOT NULL, 
     description TEXT,
-    manufacture_date DATE NOT NULL,
-    expiration_date DATE NOT NULL
+    manufacturedate DATE NOT NULL,
+    expirationdate DATE NOT NULL
 );
