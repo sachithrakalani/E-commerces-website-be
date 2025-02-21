@@ -8,9 +8,10 @@ import userRoutes from "./routes/userRoutes.js";
 import createAdminTable from "./data/createAdminTable.js";
 import adminRoutes from "./routes/adminRoutes.js";
 import createWinesTable from "./data/createWinesTable.js";
+import wineRouters from "./routes/wineRoutes.js"
 
 dotenv.config();
-
+wineRouters
 const app = express();
 
 // Middlewares
@@ -20,6 +21,7 @@ app.use(cors());
 //Routes
 app.use("/api", userRoutes);
 app.use("/api", adminRoutes);
+app.use("/api", wineRouters);
 
 //Error Handling middleware
 app.use(errorHandling);
