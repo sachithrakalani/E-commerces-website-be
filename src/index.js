@@ -7,6 +7,7 @@ import errorHandling from "./middlewares/errorhandling.js";
 import userRoutes from "./routes/userRoutes.js";
 import createAdminTable from "./data/createAdminTable.js";
 import adminRoutes from "./routes/adminRoutes.js";
+import createWinesTable from "./data/createWinesTable.js";
 
 dotenv.config();
 
@@ -25,6 +26,7 @@ app.use(errorHandling);
 
 createUserTable();
 createAdminTable();
+createWinesTable();
 
 // Testing POSTGRES Connection
 app.get("/", async (req, res) => {
