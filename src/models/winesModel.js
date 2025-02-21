@@ -13,3 +13,8 @@ export const createWinesQuery = async (
   );
   return result.rows[0];
 };
+
+export const getAllWinesQuery = async () =>{
+    const result = await pool.query("SELECT * FROM wines");
+    return result.rows;
+}
